@@ -23,6 +23,9 @@ module.exports = {
     params: {
       shell: "{{kernel.path('bin/miniconda/Library/bin/bash.exe')}}",
       message: "cursor-agent {{args.prompt ? JSON.stringify(args.promt) : ''}}",
+      env: {
+        PATH: ['{{path.resolve(envs.HOME || envs.Home || envs.home, ".local/bin")}}'"],
+      },
       path: "{{args.cwd}}",
       input: true
     }
@@ -32,6 +35,9 @@ module.exports = {
     method: "shell.run",
     params: {
       message: "cursor-agent {{args.prompt ? JSON.stringify(args.promt) : ''}}",
+      env: {
+        PATH: ['{{path.resolve(envs.HOME || envs.Home || envs.home, ".local/bin")}}'"],
+      },
       path: "{{args.cwd}}",
       input: true
     }

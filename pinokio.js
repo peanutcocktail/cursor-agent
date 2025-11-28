@@ -17,6 +17,25 @@ module.exports = {
       message: "curl https://cursor.com/install -fsSL | bash"
     }
   }],
+  update: [{
+    method: "shell.run",
+    params: {
+      message: "git pull",
+    }
+  }, {
+    when: "{{platform === 'win32'}}",
+    method: "shell.run",
+    params: {
+      shell: "{{kernel.path('bin/miniconda/Library/bin/bash.exe')}}",
+      message: "curl https://cursor.com/install -fsSL | bash"
+    }
+  }, {
+    when: "{{platform !== 'win32'}}",
+    method: "shell.run",
+    params: {
+      message: "curl https://cursor.com/install -fsSL | bash"
+    }
+  }],
   run: [{
     when: "{{platform === 'win32'}}",
     method: "shell.run",
